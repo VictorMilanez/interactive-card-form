@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 
 export const Form = () => {
   return (
-    <form className="form w-130 h-96 col-start-2 row-start-2 flex flex-col gap-1 items-center ml-60 2xl:ml-96 2xl:mb-44">
+    <form className="form w-130 h-96 col-start-2 row-start-2 flex flex-col gap-1 items-center ml-60 2xl:ml-64 2xl:mb-44">
       <label
         htmlFor="name"
         className="w-80 text-[hsl(278,68%,11%)] font-bold text-xs uppercase"
