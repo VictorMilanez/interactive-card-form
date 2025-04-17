@@ -45,6 +45,7 @@ export const Form = ({ onInputChange, formData }: InputComponentsProps) => {
         "
         value={formData.number}
         onChange={handleChange}
+        maxLength={19}
         className="w-80 h-9 p-2 mb-10 text-[hsl(279,6%,55%)] outline-[hsl(278,94%,30%)] border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md"
       />
 
@@ -63,6 +64,7 @@ export const Form = ({ onInputChange, formData }: InputComponentsProps) => {
             placeholder="MM"
             value={formData.dateMonth}
             onChange={handleChange}
+            maxLength={2}
             className="w-14 h-9 p-2 text-[hsl(279,6%,55%)] outline-[hsl(278,94%,30%)] border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md"
           />
         </div>
@@ -79,8 +81,9 @@ export const Form = ({ onInputChange, formData }: InputComponentsProps) => {
             name="dateYear"
             id="year"
             placeholder="YY"
-            onChange={handleChange}
             value={formData.dateYear}
+            onChange={handleChange}
+            maxLength={2}
             className="w-14 h-9 p-2 text-[hsl(279,6%,55%)] outline-[hsl(278,94%,30%)] border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md"
           />
         </div>
@@ -99,6 +102,7 @@ export const Form = ({ onInputChange, formData }: InputComponentsProps) => {
             placeholder="e.g. 123"
             value={formData.safeCode}
             onChange={handleChange}
+            maxLength={3}
             className="w-40 h-9 p-2 text-[hsl(279,6%,55%)] outline-[hsl(278,94%,30%)] border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md"
           />
         </div>
