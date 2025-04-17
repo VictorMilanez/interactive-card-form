@@ -15,7 +15,7 @@ export const Form = () => {
         name="name"
         id="name"
         placeholder="e.g Jane Applessed"
-        className="w-80 h-9 mb-10 text-[hsl(279,6%,55%)] border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md"
+        className="w-80 h-9 p-2 mb-10 text-[hsl(279,6%,55%)] outline-[hsl(278,94%,30%)] border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md"
       />
 
       <label
@@ -30,7 +30,7 @@ export const Form = () => {
         id="cardnumber"
         placeholder="e.g 1234 5678 9123 0000
         "
-        className="w-80 h-9 mb-10 text-[hsl(279,6%,55%)] border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md"
+        className="w-80 h-9 p-2 mb-10 text-[hsl(279,6%,55%)] outline-[hsl(278,94%,30%)] border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md"
       />
 
       <div className="flex justify-center w-full gap-7 mr-30">
@@ -39,14 +39,14 @@ export const Form = () => {
             htmlFor="mounth"
             className="w-80 text-[hsl(278,68%,11%)] font-bold text-xs uppercase"
           >
-            mm
+            exp. date
           </label>
           <input
             type="text"
             name="mounth"
             id="mounth"
             placeholder="MM"
-            className="w-14 h-9 text-[hsl(279,6%,55%)] border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md"
+            className="w-14 h-9 p-2 text-[hsl(279,6%,55%)] outline-[hsl(278,94%,30%)] border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md"
           />
         </div>
 
@@ -55,14 +55,14 @@ export const Form = () => {
             htmlFor="year"
             className="w-80 text-[hsl(278,68%,11%)] font-bold text-xs uppercase"
           >
-            yy
+            (mm/yy)
           </label>
           <input
             type="text"
             name="yeaR"
             id="year"
             placeholder="YY"
-            className="w-14 h-9 text-[hsl(279,6%,55%)] border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md"
+            className="w-14 h-9 p-2 text-[hsl(279,6%,55%)] outline-[hsl(278,94%,30%)] border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md"
           />
         </div>
 
@@ -78,7 +78,7 @@ export const Form = () => {
             name="safecode"
             id="safecode"
             placeholder="e.g. 123"
-            className="w-40 h-9 text-[hsl(279,6%,55%)] border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md"
+            className="w-40 h-9 p-2 text-[hsl(279,6%,55%)] outline-[hsl(278,94%,30%)] border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md"
           />
         </div>
       </div>
