@@ -19,7 +19,7 @@ export const Card = ({ receivedValue }: CardProps) => {
           </p>
           <div className="flex">
             <p className="text-white text-xs tracking-widest">
-              {receivedValue.dateMonth || "00/"}
+              {receivedValue.dateMonth || "00"}
             </p>
             <p className="text-white text-xs tracking-widest">/</p>
             <p className="text-white text-xs tracking-widest">
