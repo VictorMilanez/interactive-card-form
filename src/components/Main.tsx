@@ -7,7 +7,7 @@ import { CompletionScreen } from "./CompletionScreen";
 export const MainPage = () => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
-    number: "",
+    cardNumber: "",
     dateMonth: "",
     dateYear: "",
     safeCode: "",
@@ -15,14 +15,9 @@ export const MainPage = () => {
 
   const [formSend, setFormSend] = useState<boolean>(false);
 
-  const handleInputChange = (name: string, value: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleConfirm = () => {
+  const handleConfirm = (data: FormData) => {
+    console.log("dados recebidos: ", data);
+    setFormData(data);
     setFormSend(true);
   };
 
@@ -34,9 +29,9 @@ export const MainPage = () => {
           <CompletionScreen onContinue={() => setFormSend(false)} />
         ) : (
           <Form
-            onInputChange={handleInputChange}
-            formData={formData}
             onConfirm={handleConfirm}
+            formData={formData}
+            setFormData={setFormData}
           />
         )}
       </div>

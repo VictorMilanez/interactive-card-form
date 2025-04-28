@@ -1,30 +1,42 @@
+import { useEffect } from "react";
 import { FormData } from "../types/FormData";
 import { Button } from "./Button";
-// import { useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 type InputComponentsProps = {
-  onInputChange: (name: string, value: string) => void;
+  onConfirm: (data: FormData) => void;
   formData: FormData;
-  onConfirm: () => void;
+  setFormData: React.Dispatch<React.SetStateAction<FormData>>;
 };
 
-export const Form = ({
-  onInputChange,
-  formData,
-  onConfirm,
-}: InputComponentsProps) => {
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    onInputChange(name, value);
+export const Form = ({ onConfirm, setFormData }: InputComponentsProps) => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<FormData>();
+
+  const inputValues = watch();
+
+  useEffect(() => {
+    setFormData((prevData) => {
+      if (JSON.stringify(prevData) !== JSON.stringify(inputValues)) {
+        return inputValues;
+      }
+      return prevData;
+    });
+  }, [inputValues, setFormData]);
+
+  const handleSubmitForm = (data: FormData) => {
+    console.log(data);
+    onConfirm(data);
   };
 
   return (
     <form
       className="form w-130 h-96 col-start-2 row-start-2 flex flex-col gap-1 items-center ml-60 2xl:ml-64 2xl:mb-44"
-      onSubmit={(event) => {
-        event.preventDefault();
-        onConfirm();
-      }}
+      onSubmit={handleSubmit(handleSubmitForm)}
     >
       <label
         htmlFor="name"
@@ -34,88 +46,119 @@ export const Form = ({
       </label>
       <input
         type="text"
-        name="name"
         id="name"
         placeholder="e.g Jane Applessed"
-        value={formData.name}
-        onChange={handleInputChange}
-        className="w-80 h-9 p-2 mb-10 text-[hsl(279,6%,55%)] outline-[hsl(278,94%,30%)] border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md"
+        className="w-80 h-9 p-2 text-[hsl(279,6%,55%)] outline-[hsl(278,94%,30%)] border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md"
+        {...register("name", {
+          required: "Can't be blank!",
+        })}
       />
+      {typeof errors.name?.message === "string" && (
+        <p className="text-sm text-red-500">{errors.name?.message}</p>
+      )}
 
       <label
-        htmlFor="cardnumber"
-        className="w-80 text-[hsl(278,68%,11%)] font-bold text-xs uppercase"
+        htmlFor="cardNumber"
+        className="w-80 mt-10 text-[hsl(278,68%,11%)] font-bold text-xs uppercase"
       >
         CARD NUMBER
       </label>
       <input
         type="text"
-        name="number"
-        id="cardnumber"
-        placeholder="e.g 1234 5678 9123 0000
-        "
-        value={formData.number}
-        onChange={handleInputChange}
-        maxLength={19}
-        className="w-80 h-9 p-2 mb-10 text-[hsl(279,6%,55%)] outline-[hsl(278,94%,30%)] border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md"
+        id="cardNumber"
+        placeholder="e.g 1234 5678 9123 0000"
+        className="w-80 h-9 p-2 text-[hsl(279,6%,55%)] outline-[hsl(278,94%,30%)] border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md"
+        {...register("cardNumber", {
+          required: "Can't be blank!",
+          maxLength: {
+            value: 19,
+            message: "Name can't be longer than 19 characters",
+          },
+          pattern: {
+            value: /^[0-9\s]+$/,
+            message: "Only numbers are allowed",
+          },
+        })}
       />
+      {typeof errors.cardNumber?.message === "string" && (
+        <p className="text-sm text-red-500">{errors.cardNumber?.message}</p>
+      )}
 
-      <div className="flex justify-center w-full gap-7 mr-30">
+      <div className="flex justify-center w-full gap-7 mr-30 mt-10">
         <div className="flex flex-col w-9">
           <label
-            htmlFor="mounth"
+            htmlFor="dateMonth"
             className="w-80 text-[hsl(278,68%,11%)] font-bold text-xs uppercase"
           >
             exp. date
           </label>
           <input
             type="text"
-            name="dateMonth"
-            id="mounth"
+            id="dateMonth"
             placeholder="MM"
-            value={formData.dateMonth}
-            onChange={handleInputChange}
             maxLength={2}
             className="w-14 h-9 p-2 text-[hsl(279,6%,55%)] outline-[hsl(278,94%,30%)] border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md"
+            {...register("dateMonth", {
+              required: "Can't be blank!",
+              maxLength: {
+                value: 2,
+                message: "Can't be longer than 2 characters",
+              },
+            })}
           />
+          {typeof errors.dateMonth?.message === "string" && (
+            <p className="text-sm text-red-500">{errors.dateMonth?.message}</p>
+          )}
         </div>
 
         <div className="flex flex-col w-9 mr-6">
           <label
-            htmlFor="year"
+            htmlFor="dateYear"
             className="w-80 text-[hsl(278,68%,11%)] font-bold text-xs uppercase"
           >
             (mm/yy)
           </label>
           <input
             type="text"
-            name="dateYear"
-            id="year"
+            id="dateYear"
             placeholder="YY"
-            value={formData.dateYear}
-            onChange={handleInputChange}
-            maxLength={2}
             className="w-14 h-9 p-2 text-[hsl(279,6%,55%)] outline-[hsl(278,94%,30%)] border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md"
+            {...register("dateYear", {
+              required: "Can't be blank!",
+              maxLength: {
+                value: 2,
+                message: "Can't be longer than 2 characters",
+              },
+            })}
           />
+          {typeof errors.dateYear?.message === "string" && (
+            <p className="text-sm text-red-500">{errors.dateYear?.message}</p>
+          )}
         </div>
 
         <div className="flex flex-col w-9">
           <label
-            htmlFor="safecode"
+            htmlFor="safeCode"
             className="w-80 text-[hsl(278,68%,11%)] font-bold text-xs uppercase"
           >
             cvc
           </label>
           <input
             type="text"
-            name="safeCode"
-            id="safecode"
+            id="safeCode"
             placeholder="e.g. 123"
-            value={formData.safeCode}
-            onChange={handleInputChange}
-            maxLength={3}
             className="w-40 h-9 p-2 text-[hsl(279,6%,55%)] outline-[hsl(278,94%,30%)] border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md"
+            {...register("safeCode", {
+              required: "Can't be blank!",
+              maxLength: {
+                value: 3,
+                message: "Can't be longer than 3 characters",
+              },
+            })}
           />
+          {typeof errors.safeCode?.message === "string" && (
+            <p className="text-sm text-red-500">{errors.safeCode?.message}</p>
+          )}
         </div>
       </div>
 

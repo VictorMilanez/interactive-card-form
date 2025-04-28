@@ -11,11 +11,11 @@ export const Card = ({ receivedValue }: CardProps) => {
         <div className="w-12 h-12 absolute top-5 left-8 rounded-full bg-white"></div>
         <div className="w-5 h-5 absolute top-9 left-24 rounded-full border border-white"></div>
         <p className="ml-4 text-white text-2xl font-semibold tracking-widest">
-          {receivedValue.number || "1234 5678 9212 8794"}
+          {receivedValue.cardNumber || "1234 5678 9212 8794"}
         </p>
         <div className="ml-4 mt-5 mb-2 flex justify-between w-72">
           <p className="text-white text-xs uppercase tracking-widest">
-            {receivedValue.name || "Felicia Leire"}
+            {receivedValue.name || "Nome Sobrenome"}
           </p>
           <div className="flex">
             <p className="text-white text-xs tracking-widest">

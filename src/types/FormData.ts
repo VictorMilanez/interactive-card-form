@@ -1,6 +1,6 @@
 export type FormData = {
   name: string;
-  number: string;
+  cardNumber: string;
   dateMonth: string;
   dateYear: string;
   safeCode: string;
