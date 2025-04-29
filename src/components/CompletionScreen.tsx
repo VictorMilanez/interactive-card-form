@@ -7,7 +7,7 @@ type CompletionScreenProps = {
 
 export const CompletionScreen = ({ onContinue }: CompletionScreenProps) => {
   return (
-    <div className="w-130 h-96 col-start-2 row-start-2 flex flex-col gap-4 justify-center items-center ml-60 2xl:ml-64 2xl:mb-44">
+    <div className="w-130 h-96 lg:col-start-2 lg:row-start-2 md:row-start-13 flex flex-col gap-4 justify-center items-center md:ml-36 md:mt-80 lg:ml-60 2xl:ml-64 2xl:mb-44">
       <div className="mb-4">
         <img src={CompleteImg} alt="Imagem finalização" />
       </div>

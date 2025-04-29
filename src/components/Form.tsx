@@ -35,7 +35,7 @@ export const Form = ({ onConfirm, setFormData }: InputComponentsProps) => {
 
   return (
     <form
-      className="form w-130 h-96 col-start-2 row-start-2 flex flex-col gap-1 items-center ml-60 2xl:ml-64 2xl:mb-44"
+      className="form lg:w-130 lg:h-96 w-100 h-60 col-start-1 row-start-12 lg:col-start-2 lg:row-start-2 flex flex-col gap-1 items-center ml-60 2xl:ml-64 2xl:mb-44"
       onSubmit={handleSubmit(handleSubmitForm)}
     >
       <label
@@ -48,7 +48,11 @@ export const Form = ({ onConfirm, setFormData }: InputComponentsProps) => {
         type="text"
         id="name"
         placeholder="e.g Jane Applessed"
-        className="w-80 h-9 p-2 text-[hsl(279,6%,55%)] outline-[hsl(278,94%,30%)] border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md"
+        className={`w-80 h-9 p-2 text-[hsl(279,6%,55%)] ${
+          errors.name
+            ? "outline-red-500 border-red-500"
+            : "outline-[hsl(278,94%,30%)]"
+        } border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md`}
         {...register("name", {
           required: "Can't be blank!",
         })}
@@ -59,7 +63,7 @@ export const Form = ({ onConfirm, setFormData }: InputComponentsProps) => {
 
       <label
         htmlFor="cardNumber"
-        className="w-80 mt-10 text-[hsl(278,68%,11%)] font-bold text-xs uppercase"
+        className="w-80 lg:mt-10 mt-5 text-[hsl(278,68%,11%)] font-bold text-xs uppercase"
       >
         CARD NUMBER
       </label>
@@ -67,7 +71,11 @@ export const Form = ({ onConfirm, setFormData }: InputComponentsProps) => {
         type="text"
         id="cardNumber"
         placeholder="e.g 1234 5678 9123 0000"
-        className="w-80 h-9 p-2 text-[hsl(279,6%,55%)] outline-[hsl(278,94%,30%)] border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md"
+        className={`w-80 h-9 p-2 text-[hsl(279,6%,55%)] ${
+          errors.cardNumber
+            ? "outline-red-500 border-red-500"
+            : "outline-[hsl(278,94%,30%)]"
+        } border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md`}
         {...register("cardNumber", {
           required: "Can't be blank!",
           maxLength: {
@@ -97,7 +105,11 @@ export const Form = ({ onConfirm, setFormData }: InputComponentsProps) => {
             id="dateMonth"
             placeholder="MM"
             maxLength={2}
-            className="w-14 h-9 p-2 text-[hsl(279,6%,55%)] outline-[hsl(278,94%,30%)] border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md"
+            className={`w-14 h-9 p-2 text-[hsl(279,6%,55%)] ${
+              errors.dateMonth
+                ? "outline-red-500 border-red-500"
+                : "outline-[hsl(278,94%,30%)]"
+            } border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md`}
             {...register("dateMonth", {
               required: "Can't be blank!",
               maxLength: {
@@ -107,7 +119,9 @@ export const Form = ({ onConfirm, setFormData }: InputComponentsProps) => {
             })}
           />
           {typeof errors.dateMonth?.message === "string" && (
-            <p className="text-sm text-red-500">{errors.dateMonth?.message}</p>
+            <p className="text-sm text-red-500 w-24">
+              {errors.dateMonth?.message}
+            </p>
           )}
         </div>
 
@@ -122,7 +136,11 @@ export const Form = ({ onConfirm, setFormData }: InputComponentsProps) => {
             type="text"
             id="dateYear"
             placeholder="YY"
-            className="w-14 h-9 p-2 text-[hsl(279,6%,55%)] outline-[hsl(278,94%,30%)] border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md"
+            className={`w-14 h-9 p-2 text-[hsl(279,6%,55%)] ${
+              errors.dateYear
+                ? "outline-red-500 border-red-500"
+                : "outline-[hsl(278,94%,30%)]"
+            } border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md`}
             {...register("dateYear", {
               required: "Can't be blank!",
               maxLength: {
@@ -132,7 +150,9 @@ export const Form = ({ onConfirm, setFormData }: InputComponentsProps) => {
             })}
           />
           {typeof errors.dateYear?.message === "string" && (
-            <p className="text-sm text-red-500">{errors.dateYear?.message}</p>
+            <p className="text-sm text-red-500 w-24">
+              {errors.dateYear?.message}
+            </p>
           )}
         </div>
 
@@ -147,7 +167,11 @@ export const Form = ({ onConfirm, setFormData }: InputComponentsProps) => {
             type="text"
             id="safeCode"
             placeholder="e.g. 123"
-            className="w-40 h-9 p-2 text-[hsl(279,6%,55%)] outline-[hsl(278,94%,30%)] border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md"
+            className={`w-40 h-9 p-2 text-[hsl(279,6%,55%)] ${
+              errors.safeCode
+                ? "outline-red-500 border-red-500"
+                : "outline-[hsl(278,94%,30%)]"
+            } border border-[hsl(270,3%,87%)] shadow-sm shadow-gray-200 rounded-md`}
             {...register("safeCode", {
               required: "Can't be blank!",
               maxLength: {
@@ -157,7 +181,9 @@ export const Form = ({ onConfirm, setFormData }: InputComponentsProps) => {
             })}
           />
           {typeof errors.safeCode?.message === "string" && (
-            <p className="text-sm text-red-500">{errors.safeCode?.message}</p>
+            <p className="text-sm text-red-500 w-26">
+              {errors.safeCode?.message}
+            </p>
           )}
         </div>
       </div>
