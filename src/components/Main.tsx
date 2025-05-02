@@ -22,7 +22,7 @@ export const MainPage = () => {
   };
 
   return (
-    <section className="w-screen h-screen bg-white bg-[url('/images/bg-main-mobile.png')] lg:bg-[url('/images/bg-main-desktop.png')] lg:bg-[length:400px_100%] sm:bg-[length:800px_45%] bg-no-repeat bg-top lg:bg-left z-0">
+    <section className="container w-full lg:h-full md:h-[650px] bg-white bg-[url('/images/bg-main-mobile.png')] lg:bg-[url('/images/bg-main-desktop.png')] lg:bg-[length:400px_100%] sm:bg-[length:800px_45%] bg-[length:425px_35%] bg-no-repeat bg-top lg:bg-left z-0">
       <div className="max-w-screen-2xl mx-auto flex flex-col h-full md:grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr]">
         <div className="relative h-[300px] md:h-auto">
           <Card receivedValue={formData} />

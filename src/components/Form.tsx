@@ -15,7 +15,9 @@ export const Form = ({ onConfirm, setFormData }: InputComponentsProps) => {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<FormData>();
+  } = useForm<FormData>({
+    mode: "onChange",
+  });
 
   const inputValues = watch();
 
@@ -35,7 +37,7 @@ export const Form = ({ onConfirm, setFormData }: InputComponentsProps) => {
 
   return (
     <form
-      className="form lg:w-130 lg:h-96 w-100 h-60 col-start-1 row-start-12 lg:col-start-2 lg:row-start-2 flex flex-col gap-1 items-center ml-60 2xl:ml-64 2xl:mb-44"
+      className="form lg:w-130 lg:h-96 md:w-100 md:h-60 sm:w-80 sm:h-40 col-start-1 row-start-12 lg:col-start-2 lg:row-start-2 flex flex-col gap-1 items-center sm:ml-44 md:ml-56 2xl:ml-96 2xl:mb-44"
       onSubmit={handleSubmit(handleSubmitForm)}
     >
       <label
